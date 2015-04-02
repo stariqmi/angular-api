@@ -1,0 +1,25 @@
+{
+  "name": "angular-api",
+  "version": "1.0.0",
+  "description": "Route based API service for AngularJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stariqmi/angular-api.git"
+  },
+  "keywords": [
+    "routes",
+    "api",
+    "angular",
+    "service"
+  ],
+  "author": "Salman Tariq Mirza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stariqmi/angular-api/issues"
+  },
+  "homepage": "https://github.com/stariqmi/angular-api"
+}
