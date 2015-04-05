@@ -144,7 +144,7 @@ Initiator.prototype.serve = function() {
 			});
 		}
 
-		if (reqType === 'GET') {
+		else if (reqType === 'GET') {
 			
 			// Make actual request to the API
 			self.http.get(self.api + url)
@@ -153,6 +153,31 @@ Initiator.prototype.serve = function() {
 				// Resolve with the data
 				defer.resolve(response.data);
 			});
+		}
+
+		else if (reqType === 'DELETE') {
+			// Make actual request to the API
+			self.http.delete(self.api + url)
+			.then(function(response) {
+
+				// Resolve with the data
+				defer.resolve(response.data);
+			});	
+		}
+
+		else if (reqType === 'PUT') {
+
+			// Make actual request to the API
+			self.http.put(self.api + url, payload)
+			.then(function(response) {
+
+				// Resolve with the data
+				defer.resolve(response.data);
+			});
+		}
+
+		else {
+			throw new Error('Invalid request type: ' + reqType);
 		}
 
 		return defer.promise;
