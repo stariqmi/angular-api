@@ -7,11 +7,11 @@ The module exposes the Initiator class that can be used to add your base api url
 ## API
 The module returns the Initiator class with the following methods defined on it.
 
-**addRoute** 
+### addRoute 
 Add a route with a handler on an Initiator instance. If the handler is not defined, the _standardRouteHandler 
 is used. Look at the example below for handler function's signature.
 
-**serve**
+### serve
 Returns a constructor function to be used by **module.service** as a constructor for the service. The serve function
 is basically a **closure**.
 
