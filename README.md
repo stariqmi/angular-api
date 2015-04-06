@@ -54,7 +54,7 @@ API.addRoute('/books/:id/update',
 // Create Api Service constructor using the 'serve' function
 // The 'serve' function returns a constructor function to be used by angular for instantiation
 // of a service
-module.exports = API.server
+module.exports = API.serve();
 ```
 
 
