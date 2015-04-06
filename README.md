@@ -18,7 +18,11 @@ is basically a **closure**.
 ## How to use it?
 angular-api is simple to use.
 
+### api.js
+Create a module that returns a constructor function for services to be created with.
+
 ```javascript
+// filename: api.js
 // Require modules
 var ApiInititor = require('angular-api');
 
@@ -47,12 +51,25 @@ API.addRoute('/books/:id/update',
   }
 );
 
+// Create Api Service constructor using the 'serve' function
+// The 'serve' function returns a constructor function to be used by angular for instantiation
+// of a service
+module.exports = API.server
+```
+
+
+### app.js
+```javascript
+// filename: app.js
 // Create Angular App
+
+var angular = require('angular');
+var api = require('./api.js');
+
 var app = angular.module('MyApp', []);
 
-// Create Api Service using the 'serve' function
-// The 'serve' function returns a constructor function to be used by angular for instantiation
-app.service('ApiService', ['$http', '$q', API.serve()]);  // Don't forget to pass in $http, $q in that order
+app.service('ApiService', ['$http', '$q', api]);
+// Don't forget to pass in $http, $q in that order
 
 // Use the Api Service to make a request to one of the defined routes
 app.controller('AppCtrl', ['ApiService', function(ApiService) {
@@ -60,13 +77,13 @@ app.controller('AppCtrl', ['ApiService', function(ApiService) {
   ApiService.request('GET//books') // Returns a promise
   .then(function(data) {
     console.log(data);  // Data returned by request to api
-  })
+  });
 
   // Make POST Api request with some params
   ApiService.request('POST//books', {name: 'ngBook', author: 'Google'}) // Returns a promise
   .then(function(data) {
     console.log(data);  // Data returned by request to api
-  })
+  });
 
 }]);
 ```
